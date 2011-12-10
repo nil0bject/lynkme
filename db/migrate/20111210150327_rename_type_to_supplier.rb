@@ -1,7 +1,7 @@
 class RenameTypeToSupplier < ActiveRecord::Migration
   def up
-    rename_column(:users, :type, :supplier)
-    change_column(:users, :supplier, :boolean)
+    remove_column(:users, :type)
+    add_column(:users, :supplier, :boolean)
   end
 
   def down
