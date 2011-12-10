@@ -1,0 +1,21 @@
+%h1 Listing lynks
+
+%table
+  %tr
+    %th User
+    %th Deal
+    %th
+    %th
+    %th
+
+  - @lynks.each do |lynk|
+    %tr
+      %td= lynk.user
+      %td= lynk.deal
+      %td= link_to 'Show', lynk
+      %td= link_to 'Edit', edit_lynk_path(lynk)
+      %td= link_to 'Destroy', lynk, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Lynk', new_lynk_path

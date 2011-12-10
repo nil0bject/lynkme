@@ -1,0 +1,16 @@
+= form_for @lynk do |f|
+  -if @lynk.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@lynk.errors.count, "error")} prohibited this lynk from being saved:"
+      %ul
+        - @lynk.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :user
+    = f.text_field :user
+  .field
+    = f.label :deal
+    = f.text_field :deal
+  .actions
+    = f.submit 'Save'

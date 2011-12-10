@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %title = "Lynkme || #{yield(:title) || 'The Place to Buy Stuff'}"
+    %title= "Lynkme || #{yield(:title) || 'The Place to Buy Stuff'}"
     = stylesheet_link_tag :application
     = javascript_include_tag :application
     = csrf_meta_tags

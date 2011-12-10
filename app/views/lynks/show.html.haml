@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @lynk.user
+%p
+  %b Deal:
+  = @lynk.deal
+
+= link_to 'Edit', edit_lynk_path(@lynk)
+\|
+= link_to 'Back', lynks_path

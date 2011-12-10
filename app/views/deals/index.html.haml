@@ -1,0 +1,27 @@
+%h1 Listing deals
+
+%table
+  %tr
+    %th User
+    %th Item
+    %th Price
+    %th Quota
+    %th Expiry date
+    %th
+    %th
+    %th
+
+  - @deals.each do |deal|
+    %tr
+      %td= deal.user
+      %td= deal.item
+      %td= deal.price
+      %td= deal.quota
+      %td= deal.expiry_date
+      %td= link_to 'Show', deal
+      %td= link_to 'Edit', edit_deal_path(deal)
+      %td= link_to 'Destroy', deal, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Deal', new_deal_path

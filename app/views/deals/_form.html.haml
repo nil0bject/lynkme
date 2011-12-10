@@ -1,0 +1,25 @@
+= form_for @deal do |f|
+  -if @deal.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@deal.errors.count, "error")} prohibited this deal from being saved:"
+      %ul
+        - @deal.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :user
+    = f.text_field :user
+  .field
+    = f.label :item
+    = f.text_field :item
+  .field
+    = f.label :price
+    = f.text_field :price
+  .field
+    = f.label :quota
+    = f.number_field :quota
+  .field
+    = f.label :expiry_date
+    = f.datetime_select :expiry_date
+  .actions
+    = f.submit 'Save'

@@ -1,4 +1,12 @@
 Lynkme::Application.routes.draw do
+  resources :lynks
+
+  resources :deals
+
+  resources :items
+
+  resources :users
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
   root :to => 'application#index'
