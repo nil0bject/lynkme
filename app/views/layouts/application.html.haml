@@ -3,11 +3,14 @@
   %head
     %title= "Lynkme || #{yield(:title) || 'The Place to Buy Stuff'}"
     = stylesheet_link_tag    "application"
-    = javascript_include_tag "application"
+    = javascript_include_tag "application", "http://s1.wp.com/wp-content/plugins/snow/snowstorm.js"
     = csrf_meta_tags
   %body
     .header
       %h2= yield(:title)
+    .alerts
+      - flash.each do |key, value|
+        = content_tag(:div, value, :class => "flash #{key}")
     .main
       = yield
     .footer

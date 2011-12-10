@@ -4,4 +4,10 @@ module ApplicationHelper
     content_for(:title) { page_title }
   end
   
+  def alert(message=nil)
+    if message
+      
+    end
+  end
+  
 end

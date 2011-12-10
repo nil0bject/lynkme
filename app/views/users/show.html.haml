@@ -9,6 +9,9 @@
 %p
   %b Supplier:
   = @user.supplier
+%p
+  %b Last Session ID:
+  = @user.session_id
 
 = link_to 'Edit', edit_user_path(@user)
 \|

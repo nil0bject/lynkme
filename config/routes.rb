@@ -1,4 +1,7 @@
 Lynkme::Application.routes.draw do
+  
+  post '/login' => 'application#login'
+  
   resources :users
 
   # The priority is based upon order of creation:
