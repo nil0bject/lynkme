@@ -20,7 +20,7 @@ group :assets do
 end
 
 gem 'haml'
-gem 'jquery-rails'
+gem 'jquery-rails', '1.0.16'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
