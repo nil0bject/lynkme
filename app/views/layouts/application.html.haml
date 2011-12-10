@@ -1,0 +1,13 @@
+!!!
+%html
+  %head
+    %title = "BrotherLin Property || #{yield(:title) || 'The Place to Buy Stuff'}"
+    = stylesheet_link_tag    "application"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    .header
+      %h2= yield(:title)
+    .main
+      = yield
+    .footer
