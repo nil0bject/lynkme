@@ -10,7 +10,6 @@ gem 'mysql'
 
 gem 'json'
 
-gem 'jquery-rails'
 gem 'haml'
 
 # Gems used only for assets and not required
@@ -23,4 +22,5 @@ end
 
 group :development, :test do
   gem 'haml-rails'
+  gem 'jquery-rails'
 end
