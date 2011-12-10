@@ -10,7 +10,6 @@ gem 'mysql'
 
 gem 'json'
 
-gem 'haml'
 gem 'jquery-rails'
 
 # Gems used only for assets and not required
