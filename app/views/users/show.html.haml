@@ -5,10 +5,10 @@
   = @user.email
 %p
   %b Password:
-  = @user.password
+  = @user.password_digest
 %p
   %b Supplier:
-  = @user.supplier
+  = check_box "user", "supplier", {:disabled => true}
 %p
   %b Last Session ID:
   = @user.session_id
