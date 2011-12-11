@@ -6,6 +6,9 @@
     = javascript_include_tag "application", "http://s1.wp.com/wp-content/plugins/snow/snowstorm.js"
     = csrf_meta_tags
   %body
+    .debug
+      = "Testing:"
+      = link_to users_path
     .header
       %h2= yield(:title)
     .alerts

@@ -9,14 +9,14 @@
     %th
     %th
 
-  - @users.each do |user|
+  - @users.each do |@user|
     %tr
-      %td= user.email
-      %td= user.password
-      %td= user.supplier
-      %td= link_to 'Show', user
-      %td= link_to 'Edit', edit_user_path(user)
-      %td= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete
+      %td= @user.email
+      %td= @user.password_digest
+      %td= check_box "user", "supplier", {:disabled => true}
+      %td= link_to 'Show', @user
+      %td= link_to 'Edit', edit_user_path(@user)
+      %td= link_to 'Destroy', @user, :confirm => 'Are you sure?', :method => :delete
 
 %br
 
