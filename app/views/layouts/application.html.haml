@@ -13,7 +13,7 @@
       %h2= yield(:title)
     .alerts
       - flash.each do |key, value|
-        = content_tag(:div, value, :class => "flash #{key}")
+        = content_tag(:p, value, :class => "flash", :id => key)
     .main
       = yield
     .footer
