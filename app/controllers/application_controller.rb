@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
           session[:last_date_online] = @user.updated_at
           if @user.save!
             session[:user_id] = @user.id
-            flash[:message] = "Hello #{params.inspect; session.inspect}"
+            flash[:message] = "Signed in #{params[:email]}"
           else
             flash[:error] = "System error: Could not save session for #{params[:email]}"
           end

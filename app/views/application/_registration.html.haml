@@ -7,7 +7,6 @@
         = link_to current_user.email, "users/#{current_user.id}"
         = ". You were last on #{session[:last_date_online].asctime}"
   - else
-    %span= "#{session.inspect}"
     = form_tag('/login') do |f|
       %span.field
         %span.label= "Email:"
