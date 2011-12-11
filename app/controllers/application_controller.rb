@@ -10,33 +10,30 @@ class ApplicationController < ActionController::Base
         
   
   def login
-    puts params.inspect
-    if params[:commit] == "Login"
-      @user = User.where(:email => params[:email]).first
-      if params[:password].empty?
-        flash[:error] = "Please enter your password"
-      else
-        if !@user
-          if params[:password] == params[:password_confirmation]
-            @user = User.new(:email => params[:email], :password => params[:password], :password_confirmation => params[:password_confirmation])
-            @user.save!
-          else
-            flash[:error] = "Make sure your passwords are the same"
-          end
+    @user = User.where(:email => params[:email]).first
+    if params[:password].empty?
+      flash[:error] = "Please enter your password"
+    else
+      if !@user
+        if params[:password] == params[:password_confirmation]
+          @user = User.new(:email => params[:email], :password => params[:password], :password_confirmation => params[:password_confirmation])
+          @user.save!
+        else
+          flash[:error] = "Make sure your passwords are the same"
         end
-        if @user
-          if @user.authenticate(params[:password])
-            @user.session_id = session[:session_id]
-            if @user.save!
-              session[:user_id] = @user.id
-              flash[:message] = "Hello #{params[:email]}"
-            else
-              flash[:error] = "System error: Could not save session for #{params[:email]}"
-            end
+      end
+      if @user
+        if @user.authenticate(params[:password])
+          @user.session_id = session[:session_id]
+          if @user.save!
+            session[:user_id] = @user.id
+            flash[:message] = "Hello #{params[:email]}"
           else
-            flash[:error] = "Incorrect login. Forgot your password?"
-            session[:user_id] = nil
+            flash[:error] = "System error: Could not save session for #{params[:email]}"
           end
+        else
+          flash[:error] = "Incorrect login. Forgot your password?"
+          session[:user_id] = nil
         end
       end
     end
