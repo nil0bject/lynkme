@@ -2,15 +2,19 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   
   def index
-    @user = User.new
+    
   end
   
   
-        
+  def logoout
+    temp = session
+    reset_session
+    session.reverse_merge!(temp)
+  end    
         
   
   def login
-    @user = User.where(:email => params[:email]).first
+    @user = User.find_by_email(params[:email])
     if params[:password].empty?
       flash[:error] = "Please enter your password"
     else
@@ -25,9 +29,10 @@ class ApplicationController < ActionController::Base
       if @user
         if @user.authenticate(params[:password])
           @user.session_id = session[:session_id]
+          session[:last_date_online] = @user.updated_at
           if @user.save!
             session[:user_id] = @user.id
-            flash[:message] = "Hello #{params[:email]}"
+            flash[:message] = "Hello #{params.inspect; session.inspect}"
           else
             flash[:error] = "System error: Could not save session for #{params[:email]}"
           end
@@ -37,7 +42,7 @@ class ApplicationController < ActionController::Base
         end
       end
     end
-    redirect_to root_path, :email => params[:email]
+    redirect_to root_path
   end
   
   def create  

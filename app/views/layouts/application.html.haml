@@ -8,12 +8,15 @@
   %body
     .debug
       = "Testing:"
+      = link_to "Home", root_path
+      = "|"
       = link_to users_path, users_path
-    .header
-      %h2= yield(:title)
+    = render 'registration'
     .alerts
       - flash.each do |key, value|
         = content_tag(:p, value, :class => "flash", :id => key)
+    .header
+      %h2= yield(:title)
     .main
       = yield
     .footer

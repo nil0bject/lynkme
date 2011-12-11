@@ -1,5 +1,6 @@
 $(document).ready(function() {$('.login input#password_confirmation').parent().hide()
-  $('.login h3.register').click(function() {
+  $('.login .register a').click(function() {
+    $('.login .register').hide();
     $('.login input#password_confirmation').parent().fadeIn()
     $('.login .actions input').val('Register')
   });

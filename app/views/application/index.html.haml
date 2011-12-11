@@ -1,18 +1,5 @@
 - title "Welcome"
-.login
-  = form_tag('/login') do |f|
-    .field
-      %span.label= "Email:"
-      = email_field_tag :email, nil, :placeholder => 'john@doe.com'
-    .field
-      %span.label= "Password:"
-      = password_field_tag
-    %h3.register= link_to "New User?", "#"
-    .field
-      %span.label= "Confirm Password:"
-      = password_field_tag :password_confirmation
-    .actions
-      = submit_tag "Login"
+
       
 
 

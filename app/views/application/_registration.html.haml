@@ -1,0 +1,23 @@
+.login
+  - if session[:user_id]
+    - current_user = User.find(session[:user_id])
+    - if current_user.try(:session_id) == session[:session_id]
+      %span
+        = "Hi, "
+        = link_to current_user.email, "users/#{current_user.id}"
+        = ". You were last on #{session[:last_date_online].asctime}"
+  - else
+    %span= "#{session.inspect}"
+    = form_tag('/login') do |f|
+      %span.field
+        %span.label= "Email:"
+        = email_field_tag :email, nil, :placeholder => 'john@doe.com'
+      %span.field
+        %span.label= "Password:"
+        = password_field_tag
+      %span.field
+        %span.label= "Confirm Password:"
+        = password_field_tag :password_confirmation
+      %span.actions
+        = submit_tag "Login"
+      %span.register= link_to "New User?", "#"
