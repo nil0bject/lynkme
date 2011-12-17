@@ -1,8 +1,23 @@
 - title "Welcome"
 
+.lynks
+  - @lynks = Lynk.where(:user_id => current_user.id)
+  %h3= "Your Lynks"
+  .current_user_lynks{:style=>"display: none;"}= render :template=>'lynks/index'
 
+.deals
+  - deals_days_ago = 30
+  - number_of_deals = 10
+  - @deals = Deal.where("created_at > #{Date.today-deals_days_ago}").limit(number_of_deals)
+  %h3= "Deals in the last #{deals_days_ago} days"
+  .last_30_days_deals{:style=>"display: none;"}= render :template=>'deals/index'
 
 
 -# After page load
-%script#index
+#index
   :javascript
+    $("h3").each(function () {
+      $(this).click(function () {
+        $(this).next().toggle("slow");
+      });
+    });
