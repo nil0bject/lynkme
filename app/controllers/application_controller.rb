@@ -23,7 +23,8 @@ class ApplicationController < ActionController::Base
           @user = User.new(:email => params[:email], :password => params[:password], :password_confirmation => params[:password_confirmation])
           @user.save!
         else
-          flash[:error] = "Make sure your passwords are the same"
+          flash[:error] = (params[:commit]=="Login") ? "Username or password incorrect." : "Make sure your passwords are the same. "
+           flash[:message] = "Please try again."
         end
       end
       if @user
@@ -59,7 +60,9 @@ class ApplicationController < ActionController::Base
   private
   
   def current_user
-    @current_user ||= User.find_by_session_id(session[:session_id]) if session[:session_id]
+    if session[:session_id] && session[:user_id] && @current_user = User.find(session[:user_id])
+      @current_user ||= User.find_by_session_id(session[:session_id])
+    end
   end
 
   helper_method :current_user
