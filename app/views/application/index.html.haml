@@ -8,7 +8,7 @@
 .deals
   - deals_days_ago = 30
   - number_of_deals = 10
-  - @deals = Deal.where("created_at > #{Date.today-deals_days_ago}").limit(number_of_deals)
+  - @deals = Deal.where("DATE(created_at) > DATE('#{Date.today-deals_days_ago}')").limit(number_of_deals) || Deal.all
   %h3= "Deals in the last #{deals_days_ago} days"
   .last_30_days_deals{:style=>"display: none;"}= render :template=>'deals/index'
 
