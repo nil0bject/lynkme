@@ -10,7 +10,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111217042436) do
+ActiveRecord::Schema.define(:version => 20111217044413) do
+
+  create_table "deals", :force => true do |t|
+    t.integer  "item_id"
+    t.integer  "user_id"
+    t.decimal  "price",       :precision => 10, :scale => 0
+    t.integer  "quota"
+    t.datetime "expiry_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "deals", ["item_id"], :name => "index_deals_on_item_id"
+  add_index "deals", ["user_id"], :name => "index_deals_on_user_id"
 
   create_table "items", :force => true do |t|
     t.string   "name"
@@ -18,6 +31,16 @@ ActiveRecord::Schema.define(:version => 20111217042436) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "lynks", :force => true do |t|
+    t.integer  "deal_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "lynks", ["deal_id"], :name => "index_lynks_on_deal_id"
+  add_index "lynks", ["user_id"], :name => "index_lynks_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email"

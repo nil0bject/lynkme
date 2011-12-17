@@ -11,6 +11,8 @@
       = link_to "Home", root_path
       = "|"
       = link_to users_path, users_path
+      = "|"
+      = link_to items_path, items_path
     = render 'registration'
     .alerts
       - flash.each do |key, value|

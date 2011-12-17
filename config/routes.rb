@@ -1,5 +1,9 @@
 Lynkme::Application.routes.draw do
   
+  resources :lynks
+
+  resources :deals
+
   resources :items
 
   post '/login' => 'application#login'

@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Item:
+  = @deal.item
+%p
+  %b User:
+  = @deal.user
+%p
+  %b Price:
+  = @deal.price
+%p
+  %b Quota:
+  = @deal.quota
+%p
+  %b Expiry date:
+  = @deal.expiry_date
+
+= link_to 'Edit', edit_deal_path(@deal)
+\|
+= link_to 'Back', deals_path

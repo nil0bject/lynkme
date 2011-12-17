@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  item: 
+  user: 
+  price: 9.99
+  quota: 1
+  expiry_date: 2011-12-17 14:43:32
+
+two:
+  item: 
+  user: 
+  price: 9.99
+  quota: 1
+  expiry_date: 2011-12-17 14:43:32
