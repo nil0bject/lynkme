@@ -1,3 +1,7 @@
+- if session[:user_id]
+  - current_user = User.find(session[:user_id])
+
+
 !!!
 %html
   %head
@@ -13,6 +17,10 @@
       = link_to users_path, users_path
       = "|"
       = link_to items_path, items_path
+      = "|"
+      = link_to deals_path, deals_path
+      = "|"
+      = link_to lynks_path, lynks_path
     = render 'registration'
     .alerts
       - flash.each do |key, value|
@@ -20,5 +28,8 @@
     .header
       %h2= yield(:title)
     .main
-      = yield
+      - if current_user.try(:session_id) != session[:session_id]
+        = "not logged in"
+      - else
+        = yield
     .footer
