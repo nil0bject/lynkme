@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   end
   
   
-  def logoout
+  def logout
     temp = session
     reset_session
     session.reverse_merge!(temp)
@@ -55,4 +55,13 @@ class ApplicationController < ActionController::Base
       render "new"  
     end  
   end
+
+  private
+  
+  def current_user
+    @current_user ||= User.find_by_session_id(session[:session_id]) if session[:session_id]
+  end
+
+  helper_method :current_user
+
 end

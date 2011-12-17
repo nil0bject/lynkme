@@ -1,11 +1,9 @@
 .login
-  - if session[:user_id]
-    - current_user = User.find(session[:user_id])
-    - if current_user.try(:session_id) == session[:session_id]
-      %span
-        = "Hi, "
-        = link_to current_user.email, "users/#{current_user.id}"
-        = ". You were last on #{session[:last_date_online].asctime}"
+  - if current_user
+    %span
+      = "Hi, "
+      = link_to current_user.email, "users/#{current_user.id}"
+      = ". You were last on #{session[:last_date_online].asctime}"
   - else
     = form_tag('/login') do |f|
       %span.field
