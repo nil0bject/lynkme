@@ -1,7 +1,7 @@
 - title "Welcome"
 
 .lynks
-  - @lynks = Lynk.where(:user_id => current_user.id)
+  - @lynks = Lynk.where(:user_id => current_user.id) if current_user
   %h3= "Your Lynks"
   .current_user_lynks{:style=>"display: none;"}= render :template=>'lynks/index'
 

@@ -24,7 +24,7 @@
     .header
       %h2= yield(:title)
     .main
-      - if !current_user
+      - if current_user.blank?
         = "not logged in"
       - else
         = yield

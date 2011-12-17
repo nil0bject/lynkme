@@ -1,14 +1,21 @@
 Lynkme::Application.routes.draw do
   
+  resources :items do
+    resources :deals
+  end
+
+  resources :deals do
+    resources :lynks
+  end
+
   resources :lynks
-
-  resources :deals
-
-  resources :items
 
   post '/login' => 'application#login'
   
-  resources :users
+  resources :users do 
+    resources :deals  
+    resources :lynks
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

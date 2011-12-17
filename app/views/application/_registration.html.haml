@@ -3,7 +3,7 @@
     %span
       = "Hi, "
       = link_to current_user.email, "users/#{current_user.id}"
-      = ". You were last on #{session[:last_date_online].asctime}"
+      = session[:last_date_online] ? "You were last on #{session[:last_date_online].asctime}" : "Welcome to LynkMe"
   - else
     = form_tag('/login') do |f|
       %span.field
